@@ -12,6 +12,8 @@
 #import "LMYArticleSource.h"
 #import <UIImageView+WebCache.h>
 #import "LMYArticleContent.h"
+#import "UIImage+Extension.h"
+#import <SDWebImageManager.h>
 
 @interface LMYArticleListCell()
 
@@ -85,6 +87,7 @@
     self.source_nameLabel = source_nameLabel ;
     
     UIButton *categoryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    categoryBtn.hidden = NO ;
     [categoryBtn setTitleColor:[[LMYThemeManager sharedManager] homeTopTitleSelectedColor] forState:UIControlStateNormal];
     categoryBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     [categoryBtn setTitle:@"科技" forState:UIControlStateNormal];
@@ -236,7 +239,10 @@
         LMYLog(@"%@----%@-----",articleModel.articleContent.content,articleModel.articleContent.pics);
     }
     
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:articleModel.source_data.image]];
+//    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:articleModel.source_data.image]];
+    [[SDWebImageManager sharedManager] downloadImageWithURL:[NSURL URLWithString:articleModel.source_data.image] options:SDWebImageRetryFailed progress:nil completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+        self.profileImageView.image = [image circleImage];
+    }];
     self.source_nameLabel.text = articleModel.source_name ;
     
     [self.categoryBtn setTitle:articleModel.category_text forState:UIControlStateNormal];
@@ -247,7 +253,14 @@
     [self.headline_imageView sd_setImageWithURL:[NSURL URLWithString:articleModel.headline_img]];
 }
 
-#pragma mark - 
+- (void)setHideCategortBtn:(BOOL)hideCategortBtn
+{
+    _hideCategortBtn = hideCategortBtn ;
+    
+    self.categoryBtn.hidden = hideCategortBtn ;
+}
+
+#pragma mark -
 - (void)p_clickedAtCategoryBtn
 {
     LMYLog(@"点击了:%@",self.articleModel.category_text);

@@ -26,6 +26,15 @@
 		C660CB8E1D5EED6100517AEA /* LMYArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CB8D1D5EED6100517AEA /* LMYArticleModel.m */; };
 		C660CB911D5EEF8500517AEA /* LMYArticleSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CB901D5EEF8500517AEA /* LMYArticleSource.m */; };
 		C660CB941D5F08E100517AEA /* LMYArticleContent.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CB931D5F08E100517AEA /* LMYArticleContent.m */; };
+		C660CBF31D629F1D00517AEA /* LMYOtherBaseTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CBF21D629F1D00517AEA /* LMYOtherBaseTVC.m */; };
+		C660CBF61D62AB3B00517AEA /* LMYScienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CBF51D62AB3B00517AEA /* LMYScienceViewController.m */; };
+		C660CBF91D62AB4500517AEA /* LMYLifeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CBF81D62AB4500517AEA /* LMYLifeViewController.m */; };
+		C660CBFC1D62AB5100517AEA /* LMYHealthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CBFB1D62AB5100517AEA /* LMYHealthViewController.m */; };
+		C660CBFF1D62AB5900517AEA /* LMYLearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CBFE1D62AB5900517AEA /* LMYLearnViewController.m */; };
+		C660CC021D62AB6100517AEA /* LMYHumanityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CC011D62AB6100517AEA /* LMYHumanityViewController.m */; };
+		C660CC051D62AB6800517AEA /* LMYNatureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CC041D62AB6800517AEA /* LMYNatureViewController.m */; };
+		C660CC081D62AB7100517AEA /* LMYEntertainmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CC071D62AB7100517AEA /* LMYEntertainmentViewController.m */; };
+		C660CC0B1D62BBA300517AEA /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CC0A1D62BBA300517AEA /* UIImage+Extension.m */; };
 		C6927A531D5AD22A005BE38A /* LMYSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6927A521D5AD22A005BE38A /* LMYSearchViewController.m */; };
 		C6927A591D5AD263005BE38A /* LMYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6927A581D5AD263005BE38A /* LMYNavigationController.m */; };
 		C6AB5EE11D58732F0021C7F2 /* LMYSideDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB5EE01D58732F0021C7F2 /* LMYSideDeckViewController.m */; };
@@ -85,6 +94,24 @@
 		C660CB901D5EEF8500517AEA /* LMYArticleSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LMYArticleSource.m; path = ../Model/LMYArticleSource.m; sourceTree = "<group>"; };
 		C660CB921D5F08E100517AEA /* LMYArticleContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYArticleContent.h; sourceTree = "<group>"; };
 		C660CB931D5F08E100517AEA /* LMYArticleContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYArticleContent.m; sourceTree = "<group>"; };
+		C660CBF11D629F1D00517AEA /* LMYOtherBaseTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYOtherBaseTVC.h; sourceTree = "<group>"; };
+		C660CBF21D629F1D00517AEA /* LMYOtherBaseTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYOtherBaseTVC.m; sourceTree = "<group>"; };
+		C660CBF41D62AB3B00517AEA /* LMYScienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYScienceViewController.h; sourceTree = "<group>"; };
+		C660CBF51D62AB3B00517AEA /* LMYScienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYScienceViewController.m; sourceTree = "<group>"; };
+		C660CBF71D62AB4500517AEA /* LMYLifeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYLifeViewController.h; sourceTree = "<group>"; };
+		C660CBF81D62AB4500517AEA /* LMYLifeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYLifeViewController.m; sourceTree = "<group>"; };
+		C660CBFA1D62AB5100517AEA /* LMYHealthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYHealthViewController.h; sourceTree = "<group>"; };
+		C660CBFB1D62AB5100517AEA /* LMYHealthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYHealthViewController.m; sourceTree = "<group>"; };
+		C660CBFD1D62AB5900517AEA /* LMYLearnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYLearnViewController.h; sourceTree = "<group>"; };
+		C660CBFE1D62AB5900517AEA /* LMYLearnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYLearnViewController.m; sourceTree = "<group>"; };
+		C660CC001D62AB6100517AEA /* LMYHumanityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYHumanityViewController.h; sourceTree = "<group>"; };
+		C660CC011D62AB6100517AEA /* LMYHumanityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYHumanityViewController.m; sourceTree = "<group>"; };
+		C660CC031D62AB6800517AEA /* LMYNatureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYNatureViewController.h; sourceTree = "<group>"; };
+		C660CC041D62AB6800517AEA /* LMYNatureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYNatureViewController.m; sourceTree = "<group>"; };
+		C660CC061D62AB7100517AEA /* LMYEntertainmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYEntertainmentViewController.h; sourceTree = "<group>"; };
+		C660CC071D62AB7100517AEA /* LMYEntertainmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYEntertainmentViewController.m; sourceTree = "<group>"; };
+		C660CC091D62BBA300517AEA /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
+		C660CC0A1D62BBA300517AEA /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		C6927A511D5AD22A005BE38A /* LMYSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYSearchViewController.h; sourceTree = "<group>"; };
 		C6927A521D5AD22A005BE38A /* LMYSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYSearchViewController.m; sourceTree = "<group>"; };
 		C6927A571D5AD263005BE38A /* LMYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYNavigationController.h; sourceTree = "<group>"; };
@@ -295,6 +322,22 @@
 				C6927A521D5AD22A005BE38A /* LMYSearchViewController.m */,
 				C660CB5E1D5C6E0D00517AEA /* LMYAllTableViewController.h */,
 				C660CB5F1D5C6E0D00517AEA /* LMYAllTableViewController.m */,
+				C660CBF11D629F1D00517AEA /* LMYOtherBaseTVC.h */,
+				C660CBF21D629F1D00517AEA /* LMYOtherBaseTVC.m */,
+				C660CBF41D62AB3B00517AEA /* LMYScienceViewController.h */,
+				C660CBF51D62AB3B00517AEA /* LMYScienceViewController.m */,
+				C660CBF71D62AB4500517AEA /* LMYLifeViewController.h */,
+				C660CBF81D62AB4500517AEA /* LMYLifeViewController.m */,
+				C660CBFA1D62AB5100517AEA /* LMYHealthViewController.h */,
+				C660CBFB1D62AB5100517AEA /* LMYHealthViewController.m */,
+				C660CBFD1D62AB5900517AEA /* LMYLearnViewController.h */,
+				C660CBFE1D62AB5900517AEA /* LMYLearnViewController.m */,
+				C660CC001D62AB6100517AEA /* LMYHumanityViewController.h */,
+				C660CC011D62AB6100517AEA /* LMYHumanityViewController.m */,
+				C660CC031D62AB6800517AEA /* LMYNatureViewController.h */,
+				C660CC041D62AB6800517AEA /* LMYNatureViewController.m */,
+				C660CC061D62AB7100517AEA /* LMYEntertainmentViewController.h */,
+				C660CC071D62AB7100517AEA /* LMYEntertainmentViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -375,6 +418,8 @@
 				C6B5701B1D54A3AA00CFCBEB /* UIView+Frame.m */,
 				C6AB5EF81D589DF30021C7F2 /* UIImage+Theme.h */,
 				C6AB5EF91D589DF30021C7F2 /* UIImage+Theme.m */,
+				C660CC091D62BBA300517AEA /* UIImage+Extension.h */,
+				C660CC0A1D62BBA300517AEA /* UIImage+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -586,12 +631,18 @@
 				C6AB5EE71D5873EC0021C7F2 /* LMYCollectTableViewController.m in Sources */,
 				C660CB721D5CC8A900517AEA /* MBProgressHUD.m in Sources */,
 				C660CB7B1D5D7DE700517AEA /* LMYHomeCalendarCell.m in Sources */,
+				C660CC051D62AB6800517AEA /* LMYNatureViewController.m in Sources */,
 				C6AB5EE11D58732F0021C7F2 /* LMYSideDeckViewController.m in Sources */,
+				C660CBFC1D62AB5100517AEA /* LMYHealthViewController.m in Sources */,
 				C6AB5EFD1D58AA7D0021C7F2 /* LMYSideDeckBottomCell.m in Sources */,
 				C660CB691D5C8D9600517AEA /* LMYAdView.m in Sources */,
+				C660CBF91D62AB4500517AEA /* LMYLifeViewController.m in Sources */,
+				C660CC021D62AB6100517AEA /* LMYHumanityViewController.m in Sources */,
 				C6AB5EF11D5877440021C7F2 /* LMYSideDeckBottomView.m in Sources */,
 				C6AB5EFA1D589DF30021C7F2 /* UIImage+Theme.m in Sources */,
 				C6B570191D54A26000CFCBEB /* LMYURL.m in Sources */,
+				C660CBF31D629F1D00517AEA /* LMYOtherBaseTVC.m in Sources */,
+				C660CC0B1D62BBA300517AEA /* UIImage+Extension.m in Sources */,
 				C660CB8B1D5EDA7A00517AEA /* LMYArticleOtherListCell.m in Sources */,
 				C660CB881D5DA5AE00517AEA /* LMYHomeDateCell.m in Sources */,
 				C6AB5EE41D5873940021C7F2 /* LMYHomeViewController.m in Sources */,
@@ -601,10 +652,12 @@
 				C6AB5EED1D5874480021C7F2 /* LMYSettingTableViewController.m in Sources */,
 				C6927A591D5AD263005BE38A /* LMYNavigationController.m in Sources */,
 				C660CB631D5C81FB00517AEA /* LMYInfiniteScrollView.m in Sources */,
+				C660CBFF1D62AB5900517AEA /* LMYLearnViewController.m in Sources */,
 				C6AB5EF41D5877AA0021C7F2 /* LMYThemeManager.m in Sources */,
 				C660CB911D5EEF8500517AEA /* LMYArticleSource.m in Sources */,
 				C660CB751D5CCD2B00517AEA /* LMYHomeHandpick.m in Sources */,
 				C6B570141D54A11100CFCBEB /* LMYConst.m in Sources */,
+				C660CC081D62AB7100517AEA /* LMYEntertainmentViewController.m in Sources */,
 				C6AB5F001D59ADD00021C7F2 /* LMYScrollView.m in Sources */,
 				C660CB701D5CC8A900517AEA /* MBProgressHUD+LM.m in Sources */,
 				C660CB781D5D65A200517AEA /* LMYHomeHandpickView.m in Sources */,
@@ -613,6 +666,7 @@
 				C660CB941D5F08E100517AEA /* LMYArticleContent.m in Sources */,
 				C660CB601D5C6E0D00517AEA /* LMYAllTableViewController.m in Sources */,
 				C660CB7E1D5D7DFF00517AEA /* LMYArticleListCell.m in Sources */,
+				C660CBF61D62AB3B00517AEA /* LMYScienceViewController.m in Sources */,
 				C6B5700E1D549BDE00CFCBEB /* AppDelegate.m in Sources */,
 				C660CB851D5D9C0900517AEA /* LMYCalendarView.m in Sources */,
 			);

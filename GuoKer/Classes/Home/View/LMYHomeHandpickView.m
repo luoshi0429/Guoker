@@ -36,7 +36,7 @@
     {
         [self p_setupUI];
         
-//        [self p_loadAdPickid];
+        [self p_loadAdPickid];
     }
     return self ;
 }

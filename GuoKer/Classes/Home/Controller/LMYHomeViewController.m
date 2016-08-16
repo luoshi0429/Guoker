@@ -10,7 +10,13 @@
 #import "LMYScrollView.h"
 #import "LMYSearchViewController.h"
 #import "LMYAllTableViewController.h"
-
+#import "LMYScienceViewController.h"
+#import "LMYLifeViewController.h"
+#import "LMYHealthViewController.h"
+#import "LMYLearnViewController.h"
+#import "LMYNatureViewController.h"
+#import "LMYHumanityViewController.h"
+#import "LMYEntertainmentViewController.h"
 @interface LMYHomeViewController ()<UIScrollViewDelegate>
 
 @property (nonatomic, weak) UIScrollView *topTitleScrollView ;
@@ -109,15 +115,29 @@
 
 - (void)p_addChildVcs
 {
-    for (int i = 0 ; i < self.titles.count; i ++) {
-        if (i == 0) {
-            LMYAllTableViewController *allTVC = [[LMYAllTableViewController alloc] init];
-            [self addChildViewController:allTVC];
-            continue ;
-        }
-        UITableViewController *tv = [[UITableViewController alloc] init];
-        [self addChildViewController:tv];
-    }
+    LMYAllTableViewController *allTVC = [[LMYAllTableViewController alloc] init];
+    [self addChildViewController:allTVC];
+    
+    LMYScienceViewController *scienceVc = [[LMYScienceViewController alloc] init];
+    [self addChildViewController:scienceVc];
+    
+    LMYLifeViewController *lifeVc = [[LMYLifeViewController alloc] init];
+    [self addChildViewController:lifeVc];
+    
+    LMYHealthViewController *healthVc = [[LMYHealthViewController alloc] init];
+    [self addChildViewController:healthVc];
+        
+    LMYLearnViewController *learnVc = [[LMYLearnViewController alloc] init];
+    [self addChildViewController:learnVc];
+    
+    LMYHumanityViewController *humanityVc = [[LMYHumanityViewController alloc] init];
+    [self addChildViewController:humanityVc];
+    
+    LMYNatureViewController *natureVc = [[LMYNatureViewController alloc] init];
+    [self addChildViewController:natureVc];
+    
+    LMYEntertainmentViewController *entertainmentVc = [[LMYEntertainmentViewController alloc] init];
+    [self addChildViewController:entertainmentVc];
 }
 
 - (UIColor *)randomColor

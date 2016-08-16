@@ -7,6 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+
+typedef enum {
+    LMYTopicTypeScience,
+    LMYTopicTypeLife,
+    LMYTopicTypeHealth,
+    LMYTopicTypeLearn,
+    LMYTopicTypeHumanity,
+    LMYTopicTypeNature,
+    LMYTopicTypeEntertainment
+}LMYTopicType;
+
 @class LMYArticleSource,LMYArticleContent;
 @interface LMYArticleModel : NSObject
 

@@ -11,7 +11,7 @@
 @interface LMYArticleListCell : UITableViewCell
 
 @property (nonatomic,strong) LMYArticleModel *articleModel ;
-
+@property (nonatomic, assign) BOOL hideCategortBtn ;
 
 + (instancetype)articleListCell:(UITableView *)tableView;
 @end
