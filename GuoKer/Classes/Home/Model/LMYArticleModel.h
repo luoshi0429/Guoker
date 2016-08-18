@@ -48,4 +48,9 @@ typedef enum {
 @property (nonatomic, copy) NSString *content ;
 @property (nonatomic,strong) LMYArticleContent *articleContent ;
 
+/**
+ *  判断是否为其他日期
+ */
+@property (nonatomic, assign) BOOL isOtherDay ;
+
 @end

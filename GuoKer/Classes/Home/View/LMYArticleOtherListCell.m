@@ -7,190 +7,205 @@
 //
 
 #import "LMYArticleOtherListCell.h"
+#import <Masonry.h>
+#import "LMYArticleModel.h"
+#import "LMYArticleSource.h"
+#import "LMYArticleContent.h"
+#import <UIImageView+WebCache.h>
+#import "LMYArticleContent.h"
+#import "UIImage+Extension.h"
+#import <SDWebImageManager.h>
+#import "LMYArticleCellTopView.h"
+#import "LMYArticleCellBottomView.h"
+
+@interface LMYArticleOtherListCell()
+
+@property (nonatomic, weak) LMYArticleCellTopView *topView ;
+@property (nonatomic, weak) LMYArticleCellBottomView *bottomView ;
+
+@property (nonatomic, weak) UIView *centerView ;
+@property (nonatomic, weak) UILabel *title_label ;
+@property (nonatomic, weak) UILabel *summaryLabel ;
+@property (nonatomic, weak) UIView *headlineContainerView ;
+
+@end
 
 @implementation LMYArticleOtherListCell
-+ (instancetype)articleOtherListCell:(UITableView *)tableView
+// 图片最大的列数：3
+static int const totalCols = 3 ;
+
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
-    
-    static NSString * cellID = @"articleOtherListCell";
-    LMYArticleOtherListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    if (!cell) {
-        cell = [[self alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self p_setupUI];
     }
-    return cell ;
+    return self ;
 }
 
-//- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-//{
-//    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-//        [self p_setupUI];
-//    }
-//    return self ;
-//}
-//
-//- (void)p_setupUI
-//{
-//    [self p_setupTopUI];
-//    [self p_setupCenterUI];
-//    [self p_setupBottomUI];
-//}
-//
-//- (void)p_setupTopUI
-//{
-//    UIView *topView = [[UIView alloc] init];
-//    [self.contentView addSubview:topView];
-//    self.topView = topView ;
-//    
-//    UIView *topSeparatorView = [[UIView alloc] init];
-//    topSeparatorView.backgroundColor = LMYColor(234, 234, 234, 1);
-//    [self.contentView addSubview:topSeparatorView];
-//    self.topSeparatorView = topSeparatorView;
-//    
-//    UIImageView *profileImageView = [[UIImageView alloc] init];
-//    profileImageView.image = [UIImage imageNamed:@"bar_share_icon"];
-//    [topView addSubview:profileImageView];
-//    self.profileImageView = profileImageView ;
-//    
-//    UILabel *source_nameLabel = [[UILabel alloc] init];
-//    source_nameLabel.text = @"坐骨神经病";
-//    source_nameLabel.font = [UIFont systemFontOfSize:13];
-//    source_nameLabel.textColor = LMYColor(151, 151, 151, 1);
-//    [topView addSubview:source_nameLabel];
-//    self.source_nameLabel = source_nameLabel ;
-//    
-//    UIButton *categoryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [categoryBtn setTitleColor:[[LMYThemeManager sharedManager] homeTopTitleSelectedColor] forState:UIControlStateNormal];
-//    categoryBtn.titleLabel.font = [UIFont systemFontOfSize:12];
-//    [categoryBtn setTitle:@"科技" forState:UIControlStateNormal];
-//    [topView addSubview:categoryBtn];
-//    self.categoryBtn = categoryBtn ;
-//    
-//    UIView *top_BottomSeparatorView = [[UIView alloc] init];
-//    top_BottomSeparatorView.backgroundColor = LMYColor(234, 234, 234, 1);
-//    [topView addSubview:top_BottomSeparatorView];
-//    
-//    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.leading.trailing.equalTo(@0);
-//        make.height.equalTo(@(HomeArticleTopViewHeight));
-//    }];
-//    
-//    [topSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.leading.trailing.equalTo(@0);
-//        make.height.equalTo(@(SeperatorLineHeight));
-//    }];
-//    
-//    [profileImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(topView.mas_centerY);
-//        make.leading.equalTo(@(HomeArticleProfileMarginLeft));
-//        make.width.height.equalTo(@(HomeArticleProfileWH));
-//    }];
-//    
-//    [source_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(topView.mas_centerY);
-//        make.leading.equalTo(profileImageView.mas_trailing).offset(HomeArticleProfileMarginRight);
-//    }];
-//    
-//    
-//    [categoryBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(topView.mas_centerY);
-//        make.trailing.equalTo(@(-HomeArticleProfileMarginLeft));
-//    }];
-//    
-//    [top_BottomSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.leading.trailing.equalTo(@0);
-//        make.height.equalTo(@(SeperatorLineHeight));
-//    }];
-//}
-//
-//- (void)p_setupCenterUI
-//{
-//    UIView *centerView = [[UIView alloc] init];
-//    [self.contentView addSubview:centerView];
-//    self.centerView = centerView ;
-//    
-//    UILabel *title_label = [[UILabel alloc] init];
-//    title_label.numberOfLines = 2 ;
-//    title_label.textColor = [UIColor blackColor];
-//    title_label.font = [UIFont systemFontOfSize:18];
-//    title_label.text = @"家里就是个巨大的猫砂盆，猫咪尿哪里全看心情?!";
-//    [centerView addSubview:title_label];
-//    self.title_label = title_label ;
-//    
-//    UILabel *summaryLabel = [[UILabel alloc] init];
-//    summaryLabel.text = @"乱拉乱尿，估计每一个猫奴都曾经经历过，甚至正在辛苦斗争中的问题吧？";
-//    summaryLabel.textColor = LMYColor(151, 151, 151, 1);
-//    summaryLabel.numberOfLines = 2 ;
-//    [centerView addSubview:summaryLabel];
-//    self.summaryLabel = summaryLabel;
-//    
-//    UIImageView *headline_imageView = [[UIImageView alloc] init];
-//    //    headline_imageView.backgroundColor = [UIColor redColor];
-//    headline_imageView.image = [UIImage imageNamed:@"logo_cover_100x50_"];
-//    headline_imageView.contentMode = UIViewContentModeScaleAspectFill;
-//    headline_imageView.clipsToBounds = YES ;
-//    [centerView addSubview:headline_imageView];
-//    self.headline_imageView = headline_imageView ;
-//    
-//    [centerView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.height.equalTo(@(HomeArticleCenterViewHeight));
-//        make.top.equalTo(self.topView.mas_bottom);
-//        make.trailing.leading.equalTo(@0);
-//    }];
-//    
-//    [title_label mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(@(HomeArticelCenterViewTopMargin));
-//        make.leading.equalTo(@(HomeArticleProfileMarginLeft));
-//        make.trailing.equalTo(headline_imageView.mas_leading).offset(-HomeArticleProfileMarginRight);
-//    }];
-//    
-//    [summaryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.equalTo(headline_imageView.mas_bottom);
-//        make.leading.equalTo(title_label.mas_leading);
-//        make.trailing.equalTo(title_label.mas_trailing);
-//    }];
-//    
-//    [headline_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(title_label.mas_top);
-//        make.trailing.equalTo(@(-HomeCellShareBtnMarginRight));
-//        make.bottom.equalTo(@0);
-//        make.width.equalTo(@(HomeArticelImageWidth));
-//    }];
-//}
-//
-//- (void)p_setupBottomUI
-//{
-//    UIView *bottomView = [[UIView alloc] init];
-//    [self.contentView addSubview:bottomView];
-//    self.bottomView = bottomView ;
-//    
-//    UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [shareBtn setImage:[UIImage imageNamed:@"bar_share_icon"] forState:UIControlStateNormal];
-//    [bottomView addSubview:shareBtn];
-//    self.shareBtn = shareBtn;
-//    
-//    UIView *bottom_bottomSeparatorView = [[UIView alloc] init];
-//    bottom_bottomSeparatorView.backgroundColor = LMYSeparatorLineColor;
-//    [bottomView addSubview:bottom_bottomSeparatorView];
-//    self.bottom_bottomSeparatorView = bottom_bottomSeparatorView;
-//    
-//    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.centerView.mas_bottom);
-//        make.leading.trailing.equalTo(@0);
-//        make.bottom.equalTo(@(-HomeCellMarginBottom));
-//    }];
-//    
-//    [shareBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(bottomView.mas_centerY);
-//        make.width.height.equalTo(@(HomeCellShareBtnWH));
-//        make.trailing.equalTo(@(-HomeCellShareBtnMarginRight));
-//    }];
-//    
-//    [bottom_bottomSeparatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.bottom.leading.trailing.equalTo(@0);
-//        make.height.equalTo(@(SeperatorLineHeight));
-//    }];
-//    
-//}
+- (void)p_setupUI
+{
+    self.backgroundColor = LMYColor(226, 232, 236, 1) ;
+    [self p_setupTopUI];
+    [self p_setupCenterUI];
+    [self p_setupBottomUI];
+}
+
+- (void)p_setupTopUI
+{
+    LMYArticleCellTopView *topView = [[LMYArticleCellTopView alloc] init];
+    topView.backgroundColor = [UIColor whiteColor];
+    [self.contentView addSubview:topView];
+    self.topView = topView ;
+    
+    [topView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.leading.trailing.equalTo(@0);
+        make.height.equalTo(@(HomeArticleTopViewHeight));
+    }];
+}
+
+- (void)p_setupCenterUI
+{
+    UIView *centerView = [[UIView alloc] init];
+    centerView.backgroundColor = [UIColor whiteColor];
+    [self.contentView addSubview:centerView];
+    self.centerView = centerView ;
+    
+    UILabel *title_label = [[UILabel alloc] init];
+    title_label.numberOfLines = 2 ;
+    title_label.textColor = [UIColor blackColor];
+    title_label.font = [UIFont systemFontOfSize:16];
+    [centerView addSubview:title_label];
+    self.title_label = title_label ;
+    
+    UILabel *summaryLabel = [[UILabel alloc] init];
+    summaryLabel.textColor = LMYColor(151, 151, 151, 1);
+    summaryLabel.numberOfLines = 2 ;
+    summaryLabel.font = [UIFont systemFontOfSize:13];
+    [centerView addSubview:summaryLabel];
+    self.summaryLabel = summaryLabel;
+    
+    UIView *headlineContainerView = [[UIView alloc] init];
+    [centerView addSubview:headlineContainerView];
+    self.headlineContainerView = headlineContainerView ;
+    
+    [centerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.topView.mas_bottom);
+        make.trailing.leading.equalTo(@0);
+        make.bottom.equalTo(summaryLabel.mas_bottom);
+    }];
+    
+    [headlineContainerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(@(HomeArticelCenterViewTopMargin));
+        make.leading.equalTo(@(HomeArticleProfileMarginLeft));
+        make.trailing.equalTo(@(-HomeArticleProfileMarginLeft));
+        make.height.equalTo(@(HomeOtherArticleOnePicHeight));
+    }];
+    
+    [title_label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(headlineContainerView.mas_leading);
+        make.trailing.equalTo(headlineContainerView.mas_trailing);
+        make.top.equalTo(headlineContainerView.mas_bottom).offset(HomeOtherArticleTitleTopMargin);
+    }];
+    
+    [summaryLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.leading.equalTo(title_label.mas_leading);
+        make.trailing.equalTo(title_label.mas_trailing);
+        make.top.equalTo(title_label.mas_bottom).offset(HomeOtherArticleTitleTopMargin);
+    }];
+}
+
+- (void)p_setupBottomUI
+{
+    LMYArticleCellBottomView *bottomView = [[LMYArticleCellBottomView alloc] init];
+    bottomView.backgroundColor = [UIColor whiteColor];
+    [self.contentView addSubview:bottomView];
+    self.bottomView = bottomView ;
+    
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.centerView.mas_bottom);
+        make.leading.trailing.equalTo(@0);
+        make.height.equalTo(@(HomeCalendarViewBottomHeight));
+    }];
+}
+
+- (void)setArticleModel:(LMYArticleModel *)articleModel
+{
+    _articleModel = articleModel ;
+    
+    self.topView.articleModel = articleModel ;
+    
+    self.title_label.text = articleModel.title ;
+    self.summaryLabel.text = articleModel.summary ;
+    
+    [self.headlineContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    LMYArticleContent *articleContent = articleModel.articleContent;
+    if (articleContent.pics.count == 1)
+    {
+        UIImageView *headlineImageView = [[UIImageView alloc] init];
+        headlineImageView.contentMode = UIViewContentModeScaleAspectFill;
+        headlineImageView.clipsToBounds = YES ;
+        LMYArticleContentPic *pic = articleContent.pics[0];
+        [headlineImageView sd_setImageWithURL:[NSURL URLWithString: pic.url] placeholderImage:[UIImage imageNamed:@"logo_cover_100x50_"]];
+        [self.headlineContainerView addSubview:headlineImageView];
+        
+        [self.headlineContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(@(HomeArticelCenterViewTopMargin));
+            make.leading.equalTo(@(HomeArticleProfileMarginLeft));
+            make.trailing.equalTo(@(-HomeArticleProfileMarginLeft));
+            make.height.equalTo(@(HomeOtherArticleOnePicHeight));
+        }];
+        
+        [headlineImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(@0);
+        }];
+    }
+    else
+    {
+        CGFloat imageWH = (SCREEN_WIDTH - 2 * HomeArticleProfileMarginLeft - 2 * HomeOtherArticlePicMargin) / totalCols ;
+        
+        for (int i = 0; i < articleContent.pics.count; i ++ )
+        {
+            if (i == 9)
+            {
+                break ;
+            }
+            LMYArticleContentPic *pic = articleContent.pics[i];
+            UIImageView *imageView = [[UIImageView alloc] init];
+            imageView.contentMode = UIViewContentModeScaleAspectFill ;
+            imageView.clipsToBounds = YES ;
+            [imageView sd_setImageWithURL:[NSURL URLWithString:pic.url] placeholderImage:[UIImage imageNamed:@"logo_cover_100x50_"]];
+            [self.headlineContainerView addSubview:imageView ];
+            
+            int row = i / 3;
+            int col = i % 3;
+            CGFloat top = row * (imageWH + HomeOtherArticlePicMargin);
+            CGFloat leading = col * (imageWH + HomeOtherArticlePicMargin) ;
+            [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.height.equalTo(@(imageWH));
+                make.top.equalTo(@(top));
+                make.leading.equalTo(@(leading));
+            }];
+            
+            if (i == 8)
+            {
+                [self.headlineContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(@(HomeArticelCenterViewTopMargin));
+                    make.leading.equalTo(@(HomeArticleProfileMarginLeft));
+                    make.trailing.equalTo(@(-HomeArticleProfileMarginLeft));
+                    make.bottom.equalTo(imageView.mas_bottom);
+                }];
+            }
+        }
+    }
+}
+
+- (CGFloat)cellHeight:(LMYArticleModel *)articleModel
+{
+    self.articleModel = articleModel ;
+    [self layoutIfNeeded];
+    return CGRectGetMaxY(self.bottomView.frame) + HomeCellMarginBottom ;
+}
 
 
 @end

@@ -66,6 +66,7 @@
     }];
 
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(p_loadData)];
+    self.tableView.mj_footer.hidden = YES ;
     
     [self.tableView.mj_header beginRefreshing];
 }
@@ -85,6 +86,7 @@
             if (weakSelf.offset == 0)
             {
                 weakSelf.articles = [LMYArticleModel mj_objectArrayWithKeyValuesArray:response[@"result"]];
+                weakSelf.tableView.mj_footer.hidden = NO ;
             }
             else
             {

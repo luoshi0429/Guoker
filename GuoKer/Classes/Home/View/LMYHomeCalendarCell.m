@@ -348,6 +348,6 @@
 {
     self.articleModel = articleModel ;
     [self layoutIfNeeded];
-    return CGRectGetMaxY(self.bottomView.frame) ;
+    return CGRectGetMaxY(self.bottomView.frame) + HomeCellMarginBottom ;
 }
 @end

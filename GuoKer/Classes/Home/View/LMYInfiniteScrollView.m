@@ -82,6 +82,7 @@ static int const totalImageViewCount = 3 ;
 {
     //添加scrollView
     UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.scrollsToTop = NO;
     //将scrollView的竖直和水平方向说的指示条隐藏后，scrollView中就没有别的子控件了
     scrollView.showsHorizontalScrollIndicator = NO ;
     scrollView.showsVerticalScrollIndicator = NO ;

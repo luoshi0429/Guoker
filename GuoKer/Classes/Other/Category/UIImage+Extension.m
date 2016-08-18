@@ -20,9 +20,10 @@
     CGContextClip(context);
     
     [self drawInRect:rect];
-    
+
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    
     return image ;
 }
 @end

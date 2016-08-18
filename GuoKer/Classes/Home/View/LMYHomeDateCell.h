@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LMYHomeDateCell : UITableViewCell
+
+@property (nonatomic, copy) NSString *pickedDateStr ;
+
 + (instancetype)homeDateCell:(UITableView *)tableView;
 @end

@@ -62,8 +62,8 @@
         topTitleScrollView.showsVerticalScrollIndicator = NO ;
         topTitleScrollView.showsHorizontalScrollIndicator = NO ;
         topTitleScrollView.bounces = NO ;
+        topTitleScrollView.scrollsToTop = NO ;
         [self.view addSubview:topTitleScrollView];
-        self.topTitleScrollView = topTitleScrollView ;
         _topTitleScrollView = topTitleScrollView ;
     }
     return _topTitleScrollView ;
@@ -75,9 +75,12 @@
     {
         LMYScrollView *scrollView = [[LMYScrollView alloc] init];
         scrollView.contentSize = CGSizeMake(self.titles.count * scrollView.width, scrollView.height);
+        scrollView.showsVerticalScrollIndicator = NO;
+        scrollView.showsHorizontalScrollIndicator = NO ;
         scrollView.pagingEnabled = YES ;
         scrollView.delegate = self ;
         scrollView.bounces = NO ;
+        scrollView.scrollsToTop = NO ;
         [self.view addSubview:scrollView];
         _scrollView = scrollView ;
     }
@@ -205,12 +208,30 @@
     
     // 默认选中第一个
     [self p_selectedViewControllerAtIndex:0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(p_changeCategory:) name:HomeArticleCellCategoryBtnNotification object:nil];
+    
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - action
+- (void)p_changeCategory:(NSNotification *)note
+{
+    NSString *category = (NSString *)note.object ;
+    NSUInteger index = [self.titles indexOfObject:category];
+    if (index == NSNotFound) {
+        return ;
+    }
+    [self p_selectedTopViewAtIndex:index];
+}
+
 - (void)p_showSideDeck
 {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LMYShowSideDeckNotification object:self];;
 }
 
 - (void)p_search
@@ -223,14 +244,21 @@
 {
     UIView *view = tapGesture.view;
     NSInteger currentIndex  = view.tag ;
+    [self p_selectedTopViewAtIndex:currentIndex];
+}
+
+- (void)p_selectedTopViewAtIndex:(NSInteger)currentIndex
+{
     self.isTapped = YES ;
     
     [self p_selectedViewControllerAtIndex:currentIndex];
     
+    UIView *view = self.titleViews[currentIndex] ;
+
     [UIView animateWithDuration:0.25 animations:^{
         self.bottomLine.x = view.x + HomeTopTitleViewMargin;
     }];
-    
+    //调整顶部条的contentOffset
     [self p_adjustTitleViewPositionAtIndex:currentIndex];
 }
 
@@ -264,14 +292,27 @@
     UILabel *currentLabel = [[self.titleViews[index] subviews] firstObject];
     currentLabel.textColor = [[LMYThemeManager sharedManager] homeTopTitleSelectedColor];
     
-    UIViewController *vc = self.childViewControllers[index];
+    UITableViewController *vc = (UITableViewController *)self.childViewControllers[index];
     // 判断是否已经创建过vc
     if (![vc isViewLoaded]) {
         vc.view.frame = CGRectMake(self.scrollView.width * index, 0, self.scrollView.width, self.scrollView.height);
-//        vc.view.backgroundColor = [self randomColor];
         [self.scrollView addSubview:vc.view];
     }
+    
+    for (UIView *sv in self.scrollView.subviews) {
+        if ([sv isKindOfClass:[UIScrollView class]]) {
+            if (sv != vc.tableView) {
+                UITableView *tv = (UITableView *)sv;
+                tv.scrollsToTop = NO ;
+            }
+        }
+    }
     [self.scrollView setContentOffset:CGPointMake(index * self.scrollView.width, 0) animated:NO];
+}
+
+- (void)p_disableOtherScrollsToTop
+{
+    [self.scrollView.subviews makeObjectsPerformSelector:@selector(scrollsToTop) withObject:@(NO)];
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -291,10 +332,10 @@
     self.bottomLine.x = HomeTopTitleViewMargin + bottomLineOffsetX ;
 }
 
-// 代码设置contentOffset动画结束时调用
+//// 代码设置contentOffset动画结束时调用
 //- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 //{
-//    LMYLog(@"scrollViewDidEndScrollingAnimation ---- %f",scrollView.contentOffset.x);
+//    
 //}
 
 // 手动拖拽结束的时候调用

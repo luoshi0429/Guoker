@@ -10,7 +10,5 @@
 
 @interface LMYSideDeckViewController : UIViewController
 
-- (void)showSideDeck;
-
 @end
 

@@ -23,7 +23,7 @@
 - (NSString *)category_text
 {
     if (!_category_text) {
-        NSDictionary *texts = @{@"pic" : @"其他" ,@"entertainment" : @"娱乐" , @"life" : @"生活" , @"science" : @"科技" , @"health" : @"健康" ,@"learning" : @"学习" ,@"humanities" : @"人文",@"nature" : @"自然"};
+        NSDictionary *texts = @{@"pic" : @"其他" ,@"entertainment" : @"娱乐" , @"life" : @"生活" , @"science" : @"科技" , @"health" : @"健康" ,@"learning" : @"学习" ,@"humanities" : @"人文",@"nature" : @"自然",@"mooc":@"其他"};
         _category_text = texts[self.category];
     }
     return _category_text ;
@@ -31,16 +31,14 @@
 
 - (LMYArticleContent *)articleContent
 {
-    if (self.content && ![self.content isEqualToString:@""]) {
+    if (![self.category isEqualToString:@"calendar"] && self.content && ![self.content isEqualToString:@""]) {
     
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[self.content dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:NULL];
-        NSLog(@"%@",dict);
-        
         LMYArticleContent *articleContent = [LMYArticleContent mj_objectWithKeyValues:dict];
         return articleContent;
     }
     
     return nil;
-    
 }
+
 @end

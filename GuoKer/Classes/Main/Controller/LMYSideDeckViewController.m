@@ -88,8 +88,14 @@ static NSTimeInterval const DURATION = 0.3;
     [self.view addSubview:bottomView];
     
     [self sideDeckBottomViewDidClickeAtIndex:0];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(p_showSideDeck) name:LMYShowSideDeckNotification object:nil];
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 - (void)p_setupUIStyle
 {
     self.view.backgroundColor = [[LMYThemeManager sharedManager] sideDeckBgColor];
@@ -107,8 +113,8 @@ static NSTimeInterval const DURATION = 0.3;
 //    return NO ;
 //}
 
-#pragma mark - 外部方法
-- (void)showSideDeck
+#pragma mark - 通知
+- (void)p_showSideDeck
 {
     [self p_topViewMoveTo:MAXOffsetX];
 }

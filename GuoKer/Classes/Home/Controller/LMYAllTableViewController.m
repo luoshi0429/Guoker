@@ -16,12 +16,19 @@
 #import "LMYArticleListCell.h"
 #import "LMYArticleModel.h"
 #import "LMYArticleSource.h"
+#import "LMYArticleViewController.h"
+#import "LMYArticleOtherListCell.h"
 
 @interface LMYAllTableViewController ()
 @property (nonatomic, weak) LMYInfiniteScrollView *handpickScrollView ;
 @property (nonatomic,strong) NSMutableArray *articles ;
 @property (nonatomic, assign) int offset ;
 @property (nonatomic,strong ) NSMutableArray *pickids ;
+@property (nonatomic,strong) NSCache *cellHeightCache ;
+//@property (nonatomic, assign) NSInteger dayCount ;
+@property (nonatomic,strong) NSMutableArray *days ;
+
+
 
 @end
 
@@ -44,6 +51,16 @@
         _pickids = [[NSMutableArray alloc] init] ;
     }
     return _pickids ;
+}
+
+- (NSCache *)cellHeightCache
+{
+    if (_cellHeightCache == nil)
+    {
+        _cellHeightCache = [[NSCache alloc] init] ;
+        [_cellHeightCache setCountLimit:5];
+    }
+    return _cellHeightCache ;
 }
 
 #pragma mark - 初始化操作
@@ -72,11 +89,17 @@
     [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(p_loadArticleData)];
+    self.tableView.mj_footer.hidden = YES ;
     
     [self.tableView registerClass:[LMYHomeCalendarCell class] forCellReuseIdentifier:@"calenderCell"];
+    [self.tableView registerClass:[LMYArticleOtherListCell class] forCellReuseIdentifier:@"articleOtherListCell"];
+//    self.dayCount = 1;
 }
 
 #pragma mark - 数据相关
+/**
+ *  文章
+ */
 - (void)p_loadArticleData
 {
     NSString *urlStr = [NSString stringWithFormat:
@@ -94,12 +117,42 @@
         {
             if (weakSelf.offset == 0)
             {
-                weakSelf.articles = [LMYArticleModel mj_objectArrayWithKeyValuesArray:response[@"result"]];
+                weakSelf.articles = nil ;
+                weakSelf.tableView.mj_footer.hidden = NO ;
             }
-            else
-            {
-                [weakSelf.articles addObjectsFromArray:[LMYArticleModel mj_objectArrayWithKeyValuesArray:response[@"result"]]];
-            }
+            
+            [response[@"result"] enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL * _Nonnull stop) {
+                LMYArticleModel *article = [LMYArticleModel mj_objectWithKeyValues:dict];
+                LMYArticleModel *lastArticle = weakSelf.articles.lastObject ;
+                if (!lastArticle)
+                {
+                    LMYArticleModel *dayArticle = [[LMYArticleModel alloc] init];
+                    dayArticle.isOtherDay = YES;
+                    dayArticle.date_picked = article.date_picked;
+                    [weakSelf.articles addObject:dayArticle];
+                    [weakSelf.articles addObject:article];
+                }
+                else
+                {
+                    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+                    NSDate *pickedDate = [NSDate dateWithTimeIntervalSince1970:[article.date_picked doubleValue]];
+                    NSDate *lastPickedDate = [NSDate dateWithTimeIntervalSince1970:[lastArticle.date_picked doubleValue]];
+               
+                    if ([currentCalendar isDate:pickedDate inSameDayAsDate:lastPickedDate])
+                    {
+                        [weakSelf.articles addObject:article];
+                    }
+                    else
+                    {
+                        LMYArticleModel *dayArticle = [[LMYArticleModel alloc] init];
+                        dayArticle.isOtherDay = YES;
+                        dayArticle.date_picked = article.date_picked;
+                        [weakSelf.articles addObject:dayArticle];
+                        [weakSelf.articles addObject:article];
+                    }
+                }
+            }];
+           
             weakSelf.offset = (int)weakSelf.articles.count ;
             [weakSelf.tableView reloadData];
         }
@@ -113,7 +166,7 @@
 }
 
 /**
- *  精选图片
+ *  精选文章id
  */
 - (void)p_loadAdPickid
 {
@@ -151,6 +204,9 @@
     }];
 }
 
+/**
+ *  精选文章的详细数据
+ */
 - (void)p_fetchDetailData
 {
     NSString *baseUrl = [NSString stringWithFormat:@"%@%@",baseURL,Home_handpickDetail];
@@ -164,7 +220,7 @@
     }
     NSString *urlStr = [baseUrl stringByAppendingString:tempStr];
     [LMYNetworkTool lmy_get:urlStr params:nil success:^(id response) {
-        LMYLog(@"%@",response);
+//        LMYLog(@"%@",response);
     } failure:^(NSError *error) {
         LMYLog(@"精选详细：%@",error);
     }];
@@ -173,22 +229,30 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1 + self.articles.count ;
+    return  self.articles.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
+    LMYArticleModel *article = self.articles[indexPath.row];
+    if (article.isOtherDay == YES)
+    {
         LMYHomeDateCell *cell = [LMYHomeDateCell homeDateCell:tableView];
+        cell.pickedDateStr = article.date_picked ;
         return cell ;
     }
     
-    LMYArticleModel *article = self.articles[indexPath.row - 1];
     if ([article.source isEqualToString:@"calendar"]) {
         LMYHomeCalendarCell *calendarCell = [tableView dequeueReusableCellWithIdentifier:@"calenderCell"];
         calendarCell.articleModel = article ;
         return calendarCell;
+    }
+    
+    if (article.articleContent) {
+        LMYArticleOtherListCell *otherCell = [tableView dequeueReusableCellWithIdentifier:@"articleOtherListCell"];
+        otherCell.articleModel = article ;
+        return otherCell ;
     }
 
     LMYArticleListCell *cell = [LMYArticleListCell articleListCell:tableView];
@@ -199,17 +263,62 @@
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return HomeDateCellHeight;
+    LMYArticleModel *article = self.articles[indexPath.row];
+    if (article.isOtherDay == YES)
+    {
+        if (indexPath.row == 0) {
+            
+            return HomeDateCellHeight;
+        }
+        return HomeDateCellHeight - HomeCellMarginBottom ;
     }
+    
+    if ([article.source isEqualToString:@"calendar"])
+    {
+        NSNumber *result = [self.cellHeightCache objectForKey:article.article_id];
+        if (result) {
+            return [result floatValue];
+        }
 
-    LMYArticleModel *article = self.articles[indexPath.row - 1];
-    if ([article.source isEqualToString:@"calendar"]) {
         LMYHomeCalendarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"calenderCell"];
-        return [cell cellHeight:article];
+        CGFloat calendarHeight = [cell cellHeight:article];
+        [self.cellHeightCache setObject:@(calendarHeight) forKey:article.article_id];
+        return calendarHeight;
+    }
+    
+    
+    if (article.articleContent) {
+        NSNumber *result = [self.cellHeightCache objectForKey:article.article_id];
+        if (result) {
+            return [result floatValue];
+        }
+        
+        LMYArticleOtherListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"articleOtherListCell"];
+        CGFloat cellHeight = [cell cellHeight:article];
+        [self.cellHeightCache setObject:@(cellHeight) forKey:article.article_id];
+        return cellHeight;
     }
     return HomeArticleListCellHeight;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LMYArticleModel *article = self.articles[indexPath.row];
+    if (article.isOtherDay)
+    {
+        return ;
+    }
+    LMYArticleViewController *articleVc = [[LMYArticleViewController alloc] init];
+    
+    [self presentViewController:articleVc animated:YES completion:nil];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    [self.cellHeightCache removeAllObjects];
+}
 
 @end
