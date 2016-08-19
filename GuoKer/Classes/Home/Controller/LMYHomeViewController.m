@@ -157,7 +157,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"果壳精选";
     self.automaticallyAdjustsScrollViewInsets = NO ;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"bar_menu_icon_36x36_"] style:UIBarButtonItemStyleDone target:self action:@selector(p_showSideDeck)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"bar_menu_icon_36x36_"] style:UIBarButtonItemStyleDone target:self action:@selector(p_showSideDeck)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search_ic_36x36_"] style:UIBarButtonItemStyleDone target:self action:@selector(p_search)];
     
     self.topTitleScrollView.frame = CGRectMake(0, 64, self.view.width, HomeTopTitleViewHeight);
@@ -229,10 +229,10 @@
     [self p_selectedTopViewAtIndex:index];
 }
 
-- (void)p_showSideDeck
-{
-    [[NSNotificationCenter defaultCenter] postNotificationName:LMYShowSideDeckNotification object:self];;
-}
+//- (void)p_showSideDeck
+//{
+//    [[NSNotificationCenter defaultCenter] postNotificationName:LMYShowSideDeckNotification object:self];;
+//}
 
 - (void)p_search
 {

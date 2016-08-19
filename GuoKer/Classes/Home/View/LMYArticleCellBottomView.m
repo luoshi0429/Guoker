@@ -26,7 +26,7 @@
 - (void)p_setupUI
 {
     UIButton *shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shareBtn setImage:[UIImage imageNamed:@"bar_share_icon"] forState:UIControlStateNormal];
+    [shareBtn setImage:[UIImage imageNamed:@"share_icon"] forState:UIControlStateNormal];
     [self addSubview:shareBtn];
     [shareBtn addTarget:self action:@selector(p_shareBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     self.shareBtn = shareBtn;

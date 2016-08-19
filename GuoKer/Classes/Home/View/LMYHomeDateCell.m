@@ -40,19 +40,9 @@
         self.dateLabel = dateLabel ;
        [self.contentView addSubview:dateLabel];
         
-        UIView *seperatorView = [[UIView alloc] init];
-        seperatorView.backgroundColor =  LMYColor(220, 220, 220, 1);
-        [self.contentView addSubview:seperatorView];
-        
         [dateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.bottom.equalTo(@(-HomeCellMarginBottom));
             make.leading.equalTo(@(HomeDateLabelMargin));
-        }];
-        
-        [seperatorView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.trailing.equalTo(@0);
-            make.height.equalTo(@(SeperatorLineHeight));
-            make.bottom.equalTo(@0);
         }];
     }
     return self;

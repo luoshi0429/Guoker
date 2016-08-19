@@ -1,4 +1,8 @@
 #import <UIKit/UIKit.h>
+/**
+ *  navBar的高度
+ */
+UIKIT_EXTERN CGFloat const NavBarHeight ;
 
 /**
  *  侧栏的cell的高度
@@ -114,6 +118,27 @@ UIKIT_EXTERN CGFloat const HomeOtherArticleTitleTopMargin;
  *  轮播图的高度
  */
 UIKIT_EXTERN CGFloat const HomeInfiniteScrollViewHeight;
+
+/**
+ *  反馈页面的左右上间距
+ */
+UIKIT_EXTERN CGFloat const FeedbackLeftRightTopMarigin;
+
+/**
+*  反馈页面的联系textField高度
+*/
+UIKIT_EXTERN CGFloat const FeedbackContactTextFieldHeight;
+
+/**
+ *  反馈页面的反馈内容textView的高度
+ */
+UIKIT_EXTERN CGFloat const FeedbackContentTextViewHeight;
+
+/**
+ *  搜索页面的textField的高度
+ */
+UIKIT_EXTERN CGFloat const SearchNavBarTextFieldHeight;
+
 
 // notification
 /**

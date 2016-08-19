@@ -6,5 +6,5 @@ pod 'MJExtension'
 pod 'MJRefresh'
 pod 'FMDB'
 pod 'SDWebImage'
-
+pod 'SVProgressHUD'
 end

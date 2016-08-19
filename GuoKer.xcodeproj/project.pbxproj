@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23869CBA6564754BE21F3640 /* libPods-GuoKer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4187C24BD4AC058415A106E2 /* libPods-GuoKer.a */; };
+		C6548E6D1D66A14500127E2F /* LMYPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C6548E6C1D66A14500127E2F /* LMYPlaceholderTextView.m */; };
 		C660CB601D5C6E0D00517AEA /* LMYAllTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CB5F1D5C6E0D00517AEA /* LMYAllTableViewController.m */; };
 		C660CB631D5C81FB00517AEA /* LMYInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CB621D5C81FB00517AEA /* LMYInfiniteScrollView.m */; };
 		C660CB661D5C844600517AEA /* LMYNetworkTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C660CB651D5C844600517AEA /* LMYNetworkTool.m */; };
@@ -63,6 +64,8 @@
 		2D63C3A50FA97FC5C0B5C442 /* Pods-GuoKer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuoKer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GuoKer/Pods-GuoKer.debug.xcconfig"; sourceTree = "<group>"; };
 		4187C24BD4AC058415A106E2 /* libPods-GuoKer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GuoKer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A6EEBCD1C6B300B00FDA82 /* Pods-GuoKer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GuoKer.release.xcconfig"; path = "Pods/Target Support Files/Pods-GuoKer/Pods-GuoKer.release.xcconfig"; sourceTree = "<group>"; };
+		C6548E6B1D66A14500127E2F /* LMYPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYPlaceholderTextView.h; sourceTree = "<group>"; };
+		C6548E6C1D66A14500127E2F /* LMYPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYPlaceholderTextView.m; sourceTree = "<group>"; };
 		C660CB5E1D5C6E0D00517AEA /* LMYAllTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYAllTableViewController.h; sourceTree = "<group>"; };
 		C660CB5F1D5C6E0D00517AEA /* LMYAllTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYAllTableViewController.m; sourceTree = "<group>"; };
 		C660CB611D5C81FB00517AEA /* LMYInfiniteScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYInfiniteScrollView.h; sourceTree = "<group>"; };
@@ -309,6 +312,8 @@
 		C6B56FF81D549B8000CFCBEB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C6548E6B1D66A14500127E2F /* LMYPlaceholderTextView.h */,
+				C6548E6C1D66A14500127E2F /* LMYPlaceholderTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -707,6 +712,7 @@
 				C660CB911D5EEF8500517AEA /* LMYArticleSource.m in Sources */,
 				C660CB751D5CCD2B00517AEA /* LMYHomeHandpick.m in Sources */,
 				C6B570141D54A11100CFCBEB /* LMYConst.m in Sources */,
+				C6548E6D1D66A14500127E2F /* LMYPlaceholderTextView.m in Sources */,
 				C660CC081D62AB7100517AEA /* LMYEntertainmentViewController.m in Sources */,
 				C6AB5F001D59ADD00021C7F2 /* LMYScrollView.m in Sources */,
 				C660CB701D5CC8A900517AEA /* MBProgressHUD+LM.m in Sources */,

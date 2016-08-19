@@ -36,7 +36,6 @@ static NSTimeInterval const DURATION = 0.3;
     if (_topView == nil)
     {
         _topView = [[UIView alloc] init] ;
-        _topView.backgroundColor = [UIColor greenColor];
         _topView.frame = self.view.bounds;
         [self.view addSubview:_topView];
     }

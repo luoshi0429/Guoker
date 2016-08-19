@@ -149,6 +149,8 @@ static int const totalCols = 3 ;
         [headlineImageView sd_setImageWithURL:[NSURL URLWithString: pic.url] placeholderImage:[UIImage imageNamed:@"logo_cover_100x50_"]];
         [self.headlineContainerView addSubview:headlineImageView];
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(p_tapped)];
+        
         [self.headlineContainerView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(@(HomeArticelCenterViewTopMargin));
             make.leading.equalTo(@(HomeArticleProfileMarginLeft));
@@ -207,5 +209,10 @@ static int const totalCols = 3 ;
     return CGRectGetMaxY(self.bottomView.frame) + HomeCellMarginBottom ;
 }
 
+
+- (void)p_tapped
+{
+    
+}
 
 @end

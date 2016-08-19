@@ -1,5 +1,10 @@
 
 /**
+ *  navBar的高度
+ */
+CGFloat const NavBarHeight = 64 ;
+
+/**
  *  侧栏的cell的高度
  */
 CGFloat const SideDeck_cellHeight = 54;
@@ -43,11 +48,11 @@ CGFloat const HomeDateLabelMargin = 20 ;
 /**
  *  日历cell的图片高度
  */
-CGFloat const HomeCalendarIconHeight = 220;
+CGFloat const HomeCalendarIconHeight = 200;
 CGFloat const HomeCalendarTopViewHeight = 40 ;
 CGFloat const HomeCalendarViewBottomHeight = 45;
 CGFloat const HomeCalendarCircleWH = 16;
-CGFloat const HomeCalendarContentMargin = 20 ;
+CGFloat const HomeCalendarContentMargin = 15 ;
 CGFloat const HomeCalendarDateContentHeight = 80 ;
 CGFloat const HomeCalendarDateMargin = 5;
 CGFloat const HomeCalendarTitleMargin = 10;
@@ -63,7 +68,7 @@ CGFloat const HomeArticleTopViewHeight = 40 ;
 /**
  *  articleCell的左右间距
  */
-CGFloat const HomeArticleProfileMarginLeft = 20 ;
+CGFloat const HomeArticleProfileMarginLeft = 15 ;
 /**
  *  articleCell的头像右间距
  */
@@ -75,7 +80,7 @@ CGFloat const HomeArticleProfileWH = 25 ;
 /**
  *  普通articleCell的中间高度
  */
-CGFloat const HomeArticleCenterViewHeight = 105;
+CGFloat const HomeArticleCenterViewHeight = 100;
 /**
  *  普通articleCell的中间头部间距
  */
@@ -98,12 +103,32 @@ CGFloat const HomeOtherArticlePicMargin = 5 ;
 /**
  *  其他的articleCell标题的上边距
  */
-CGFloat const HomeOtherArticleTitleTopMargin = 20 ;
+CGFloat const HomeOtherArticleTitleTopMargin = 15 ;
 
 /**
  *  轮播图的高度
  */
 CGFloat const HomeInfiniteScrollViewHeight = 140 ;
+
+/**
+ *  反馈页面的左右上间距
+ */
+CGFloat const FeedbackLeftRightTopMarigin = 20;
+
+/**
+ *  反馈页面的联系textField高度
+ */
+CGFloat const FeedbackContactTextFieldHeight = 40 ;
+
+/**
+ *  反馈页面的反馈内容textView的高度
+ */
+CGFloat const FeedbackContentTextViewHeight = 120;
+
+/**
+ *  搜索页面的textField的高度
+ */
+CGFloat const SearchNavBarTextFieldHeight = 32;
 
 /**
  *  显示侧栏的通知
