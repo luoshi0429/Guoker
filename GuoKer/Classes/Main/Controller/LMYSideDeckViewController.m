@@ -18,6 +18,7 @@
 @interface LMYSideDeckViewController ()<UIGestureRecognizerDelegate,LMYSideDeckBottomViewDelegate>
 
 @property (nonatomic, strong) UIView *topView ;
+@property (nonatomic, strong) UIView *coverView ;
 @property (nonatomic,strong ) UIScreenEdgePanGestureRecognizer *edgePan ;
 @property (nonatomic,strong ) UIPanGestureRecognizer *pan ;
 @property (nonatomic,strong ) LMYHomeViewController *topVc ;
@@ -40,6 +41,19 @@ static NSTimeInterval const DURATION = 0.3;
         [self.view addSubview:_topView];
     }
     return _topView ;
+}
+
+- (UIView *)coverView
+{
+    if (_coverView == nil)
+    {
+        _coverView  = [[UIView alloc] init];
+        _coverView.frame = self.view.bounds ;
+        _coverView.backgroundColor = [UIColor clearColor];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(p_hideSideDeck)];
+        [_coverView addGestureRecognizer:tap];
+    }
+    return _coverView ;
 }
 
 #pragma mark - init
@@ -118,6 +132,11 @@ static NSTimeInterval const DURATION = 0.3;
     [self p_topViewMoveTo:MAXOffsetX];
 }
 
+- (void)p_hideSideDeck
+{
+    [self p_topViewMoveTo:0];
+}
+
 #pragma mark - LMYSideDeckBottomViewDelegate
 - (void)sideDeckBottomViewDidClickeAtIndex:(NSInteger)index
 {
@@ -160,6 +179,8 @@ static NSTimeInterval const DURATION = 0.3;
 
 - (void)p_topViewMoveTo:(CGFloat)offsetX
 {
+    UIView *subview = self.topView.subviews.firstObject ;
+    
     if (offsetX <= MAXOffsetX * 0.5)
     {
         offsetX = 0;
@@ -167,7 +188,11 @@ static NSTimeInterval const DURATION = 0.3;
         tempRect.origin.x = offsetX ;
         [UIView animateWithDuration:DURATION animations:^{
             self.topView.frame = tempRect ;
+            [self.coverView removeFromSuperview];
+//            subview.userInteractionEnabled = YES ;
         }];
+        
+        
         
         [self.topView removeGestureRecognizer:self.pan];
         self.pan = nil ;
@@ -179,6 +204,8 @@ static NSTimeInterval const DURATION = 0.3;
         tempRect.origin.x = offsetX ;
         [UIView animateWithDuration:DURATION animations:^{
             self.topView.frame = tempRect ;
+//             subview.userInteractionEnabled = NO ;
+            [subview addSubview:self.coverView];
         }];
         
         if (self.pan) {
@@ -187,6 +214,8 @@ static NSTimeInterval const DURATION = 0.3;
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(backTopView:)];
         [self.topView addGestureRecognizer:pan];
         self.pan = pan ;
+        
+        
     }
 
 }

@@ -25,3 +25,8 @@ NSString * const Feedback_url = @"http://www.guokr.com/apis/handpick/feedback.js
  *  关键词:http://www.guokr.com/apis/flowingboard/flowingboard.json?name=handpick_search_keywords
  */
 NSString * const Search_keywords = @"http://www.guokr.com/apis/flowingboard/flowingboard.json?name=handpick_search_keywords";
+
+/**
+ *  搜索: http://www.guokr.com/apis/handpick/search.json?offset=0&limit=20&wd=%E5%AD%A6%E4%B9%A0
+ */
+NSString * const Search_search = @"http://www.guokr.com/apis/handpick/search.json?" ;

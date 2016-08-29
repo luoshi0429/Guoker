@@ -54,6 +54,7 @@
 
 - (void)backButtonClicked
 {
+    [self.view endEditing:YES];
     [self popViewControllerAnimated:YES];
 }
 

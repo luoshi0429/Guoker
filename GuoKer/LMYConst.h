@@ -139,6 +139,27 @@ UIKIT_EXTERN CGFloat const FeedbackContentTextViewHeight;
  */
 UIKIT_EXTERN CGFloat const SearchNavBarTextFieldHeight;
 
+/**
+ *  搜索cell的高度
+ */
+UIKIT_EXTERN CGFloat const SearchCellHeight;
+
+/**
+ *  搜索cell的padding
+ */
+UIKIT_EXTERN CGFloat const SearchCellPadding ;
+
+/**
+ *  搜索cell的图片高度
+ */
+UIKIT_EXTERN CGFloat const SearchCellHeadlineImgHeight;
+
+
+/**
+ *  搜索cell的图片宽度
+ */
+UIKIT_EXTERN CGFloat const SearchCellHeadlineImgWidth;
+
 
 // notification
 /**
@@ -149,7 +170,6 @@ UIKIT_EXTERN NSString * const LMYShowSideDeckNotification ;
 /**
  *  改变主题的通知
  */
-
 UIKIT_EXTERN NSString * const ThemeChangeNotificationKey ;
 UIKIT_EXTERN NSString * const HomeArticleCellCategoryBtnNotification;
 

@@ -131,6 +131,27 @@ CGFloat const FeedbackContentTextViewHeight = 120;
 CGFloat const SearchNavBarTextFieldHeight = 32;
 
 /**
+ *  搜索cell的高度
+ */
+CGFloat const SearchCellHeight = 140;
+
+/**
+ *  搜索cell的padding
+ */
+CGFloat const SearchCellPadding = 20;
+
+/**
+ *  搜索cell的图片高度
+ */
+CGFloat const SearchCellHeadlineImgHeight = 100;
+
+
+/**
+ *  搜索cell的图片宽度
+ */
+CGFloat const SearchCellHeadlineImgWidth = 120;
+
+/**
  *  显示侧栏的通知
  */
 NSString * const LMYShowSideDeckNotification = @"LMYShowSideDeckNotification";
