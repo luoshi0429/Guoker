@@ -40,7 +40,7 @@ static id _instance ;
     [[NSUserDefaults standardUserDefaults] setObject:@(theme) forKey:ThemeModeKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     
-    UINavigationBar *navBar = [UINavigationBar appearance];
+    UINavigationBar *navBar = [UINavigationBar appearanceWhenContainedIn:NSClassFromString(@"LMYNavigationController"), nil];
     if (theme == ThemeNight) {
        
         // 12 14 15

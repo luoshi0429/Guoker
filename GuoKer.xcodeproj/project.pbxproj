@@ -45,6 +45,10 @@
 		C69849B61D73C0CA001B3988 /* LMYKeywordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C69849B51D73C0CA001B3988 /* LMYKeywordView.m */; };
 		C69849B91D73CD98001B3988 /* LMYSearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C69849B81D73CD98001B3988 /* LMYSearchCell.m */; };
 		C69849BC1D73CDA7001B3988 /* LMYSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C69849BB1D73CDA7001B3988 /* LMYSearchResult.m */; };
+		C69849CA1D742450001B3988 /* LMYHomeSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C69849C91D742450001B3988 /* LMYHomeSQLManager.m */; };
+		C69849CD1D7425F5001B3988 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = C69849CC1D7425F5001B3988 /* NSString+Extension.m */; };
+		C69849CF1D7441D8001B3988 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C69849CE1D7441D8001B3988 /* WebKit.framework */; };
+		C6984A241D7534E8001B3988 /* LMYArticlePresentAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = C6984A231D7534E8001B3988 /* LMYArticlePresentAnimationTransition.m */; };
 		C6AB5EE11D58732F0021C7F2 /* LMYSideDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB5EE01D58732F0021C7F2 /* LMYSideDeckViewController.m */; };
 		C6AB5EE71D5873EC0021C7F2 /* LMYCollectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB5EE61D5873EC0021C7F2 /* LMYCollectTableViewController.m */; };
 		C6AB5EEA1D5874000021C7F2 /* LMYFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C6AB5EE91D5874000021C7F2 /* LMYFeedbackViewController.m */; };
@@ -139,6 +143,13 @@
 		C69849B81D73CD98001B3988 /* LMYSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYSearchCell.m; sourceTree = "<group>"; };
 		C69849BA1D73CDA7001B3988 /* LMYSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYSearchResult.h; sourceTree = "<group>"; };
 		C69849BB1D73CDA7001B3988 /* LMYSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYSearchResult.m; sourceTree = "<group>"; };
+		C69849C81D742450001B3988 /* LMYHomeSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYHomeSQLManager.h; sourceTree = "<group>"; };
+		C69849C91D742450001B3988 /* LMYHomeSQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYHomeSQLManager.m; sourceTree = "<group>"; };
+		C69849CB1D7425F5001B3988 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		C69849CC1D7425F5001B3988 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		C69849CE1D7441D8001B3988 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C6984A221D7534E8001B3988 /* LMYArticlePresentAnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYArticlePresentAnimationTransition.h; sourceTree = "<group>"; };
+		C6984A231D7534E8001B3988 /* LMYArticlePresentAnimationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYArticlePresentAnimationTransition.m; sourceTree = "<group>"; };
 		C6AB5EDF1D58732F0021C7F2 /* LMYSideDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYSideDeckViewController.h; sourceTree = "<group>"; };
 		C6AB5EE01D58732F0021C7F2 /* LMYSideDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMYSideDeckViewController.m; sourceTree = "<group>"; };
 		C6AB5EE51D5873EC0021C7F2 /* LMYCollectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMYCollectTableViewController.h; sourceTree = "<group>"; };
@@ -178,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69849CF1D7441D8001B3988 /* WebKit.framework in Frameworks */,
 				23869CBA6564754BE21F3640 /* libPods-GuoKer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +209,7 @@
 		3D4FCEDA14A7B8D3DBF74C1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C69849CE1D7441D8001B3988 /* WebKit.framework */,
 				4187C24BD4AC058415A106E2 /* libPods-GuoKer.a */,
 			);
 			name = Frameworks;
@@ -233,6 +246,7 @@
 		C670A1E21D6803BF00F552F0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C69849C71D742439001B3988 /* Tool */,
 				C670A1E31D6803BF00F552F0 /* Controller */,
 				C670A1F81D6803BF00F552F0 /* Model */,
 				C670A2011D6803BF00F552F0 /* View */,
@@ -346,6 +360,15 @@
 				C69849B81D73CD98001B3988 /* LMYSearchCell.m */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C69849C71D742439001B3988 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				C69849C81D742450001B3988 /* LMYHomeSQLManager.h */,
+				C69849C91D742450001B3988 /* LMYHomeSQLManager.m */,
+			);
+			name = Tool;
 			sourceTree = "<group>";
 		};
 		C6AB5EDE1D58731F0021C7F2 /* Controller */ = {
@@ -494,6 +517,8 @@
 				C6AB5EF91D589DF30021C7F2 /* UIImage+Theme.m */,
 				C660CC091D62BBA300517AEA /* UIImage+Extension.h */,
 				C660CC0A1D62BBA300517AEA /* UIImage+Extension.m */,
+				C69849CB1D7425F5001B3988 /* NSString+Extension.h */,
+				C69849CC1D7425F5001B3988 /* NSString+Extension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -553,6 +578,8 @@
 		C6DAA2941D6430FF00E90846 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C6984A221D7534E8001B3988 /* LMYArticlePresentAnimationTransition.h */,
+				C6984A231D7534E8001B3988 /* LMYArticlePresentAnimationTransition.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -740,6 +767,8 @@
 				C69849B91D73CD98001B3988 /* LMYSearchCell.m in Sources */,
 				C6B5701C1D54A3AA00CFCBEB /* UIView+Frame.m in Sources */,
 				C670A2231D6803BF00F552F0 /* LMYNatureViewController.m in Sources */,
+				C69849CA1D742450001B3988 /* LMYHomeSQLManager.m in Sources */,
+				C6984A241D7534E8001B3988 /* LMYArticlePresentAnimationTransition.m in Sources */,
 				C6AB5EE71D5873EC0021C7F2 /* LMYCollectTableViewController.m in Sources */,
 				C670A22D1D6803BF00F552F0 /* LMYArticleOtherListCell.m in Sources */,
 				C670A21E1D6803BF00F552F0 /* LMYHealthViewController.m in Sources */,
@@ -779,6 +808,7 @@
 				C670A2201D6803BF00F552F0 /* LMYHumanityViewController.m in Sources */,
 				C69849B61D73C0CA001B3988 /* LMYKeywordView.m in Sources */,
 				C670A2311D6803BF00F552F0 /* LMYHomeHandpickView.m in Sources */,
+				C69849CD1D7425F5001B3988 /* NSString+Extension.m in Sources */,
 				C660CB701D5CC8A900517AEA /* MBProgressHUD+LM.m in Sources */,
 				C6AB5EEA1D5874000021C7F2 /* LMYFeedbackViewController.m in Sources */,
 				C6B5700E1D549BDE00CFCBEB /* AppDelegate.m in Sources */,

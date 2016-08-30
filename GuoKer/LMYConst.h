@@ -154,12 +154,15 @@ UIKIT_EXTERN CGFloat const SearchCellPadding ;
  */
 UIKIT_EXTERN CGFloat const SearchCellHeadlineImgHeight;
 
-
 /**
  *  搜索cell的图片宽度
  */
 UIKIT_EXTERN CGFloat const SearchCellHeadlineImgWidth;
 
+/**
+ *  搜索cell的图片宽度
+ */
+UIKIT_EXTERN NSString * const HomeArticleTableName;
 
 // notification
 /**

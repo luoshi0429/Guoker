@@ -301,9 +301,11 @@
     
     for (UIView *sv in self.scrollView.subviews) {
         if ([sv isKindOfClass:[UIScrollView class]]) {
+            UITableView *tv = (UITableView *)sv;
             if (sv != vc.tableView) {
-                UITableView *tv = (UITableView *)sv;
                 tv.scrollsToTop = NO ;
+            }else{
+                tv.scrollsToTop = YES ;
             }
         }
     }

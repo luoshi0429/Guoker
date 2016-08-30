@@ -108,7 +108,7 @@ CGFloat const HomeOtherArticleTitleTopMargin = 15 ;
 /**
  *  轮播图的高度
  */
-CGFloat const HomeInfiniteScrollViewHeight = 140 ;
+CGFloat const HomeInfiniteScrollViewHeight = 160 ;
 
 /**
  *  反馈页面的左右上间距
@@ -150,6 +150,11 @@ CGFloat const SearchCellHeadlineImgHeight = 100;
  *  搜索cell的图片宽度
  */
 CGFloat const SearchCellHeadlineImgWidth = 120;
+
+/**
+ *  搜索cell的图片宽度
+ */
+NSString * const HomeArticleTableName = @"article";
 
 /**
  *  显示侧栏的通知

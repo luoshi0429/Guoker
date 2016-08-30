@@ -11,6 +11,7 @@
 #import "LMYSearchResult.h"
 #import <MJExtension.h>
 #import <MJRefresh.h>
+#import "LMYArticleViewController.h"
 
 @interface LMYSearchViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) NSMutableArray *keywords ;
@@ -226,6 +227,11 @@
 }
 
 #pragma make - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LMYArticleViewController *articleVc = [[LMYArticleViewController alloc] init];
+    
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

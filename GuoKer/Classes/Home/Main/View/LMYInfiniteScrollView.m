@@ -119,7 +119,8 @@ static int const totalImageViewCount = 3 ;
     
     // 添加描述标题
     UILabel *describeLabel = [[UILabel alloc] init];
-    describeLabel.font = [UIFont systemFontOfSize:17];
+    describeLabel.numberOfLines = 2 ;
+    describeLabel.font = [UIFont boldSystemFontOfSize:18];
     describeLabel.textColor = [UIColor whiteColor];
     [bgView addSubview:describeLabel];
     self.describeLabel = describeLabel ;
@@ -428,10 +429,10 @@ static int const totalImageViewCount = 3 ;
         CGFloat margin_ten = 10 ;
         CGFloat margin_fifteen = 15 ;
         
-        self.bgView.frame = CGRectMake(0, selfHeight - labelHeight- 2 * margin_ten, selfWidth, labelHeight + 2 * margin_ten);
+        self.bgView.frame = CGRectMake(0, selfHeight - labelHeight*2- 2 * margin_ten, selfWidth, labelHeight * 2 + 2 * margin_ten);
         
-        self.describeLabel.frame = CGRectMake(margin_twelve,margin_ten ,selfWidth - pageW - margin_twelve - margin_fifteen , labelHeight);
-        self.pageControl.frame = CGRectMake(CGRectGetMaxX(self.describeLabel.frame), margin_ten, pageW, labelHeight);
+        self.describeLabel.frame = CGRectMake(margin_twelve , margin_ten ,selfWidth - pageW - margin_twelve - margin_fifteen , labelHeight * 2);
+        self.pageControl.frame = CGRectMake(CGRectGetMaxX(self.describeLabel.frame),(self.bgView.frame.size.height - labelHeight ) * 0.5, pageW, labelHeight);
     }
     
     for (int i = 0 ; i < totalImageViewCount; i ++)

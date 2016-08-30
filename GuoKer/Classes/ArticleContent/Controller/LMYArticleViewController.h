@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class LMYArticleModel ;
 @interface LMYArticleViewController : UIViewController
-
+@property (nonatomic,strong) LMYArticleModel *articleModel ;
 @end

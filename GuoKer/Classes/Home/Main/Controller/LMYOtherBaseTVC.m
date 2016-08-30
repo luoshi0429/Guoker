@@ -11,6 +11,7 @@
 #import "LMYArticleModel.h"
 #import <MJExtension.h>
 #import <MJRefresh.h>
+#import "LMYArticleViewController.h"
 
 @interface LMYOtherBaseTVC ()
 @property (nonatomic,strong) NSMutableArray *articles ;
@@ -119,6 +120,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return HomeArticleListCellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    LMYArticleViewController *articleVc = [[LMYArticleViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:articleVc];
+    articleVc.articleModel = self.articles[indexPath.row];
+    [self presentViewController:nav animated:YES completion:nil];
+
 }
 
 @end

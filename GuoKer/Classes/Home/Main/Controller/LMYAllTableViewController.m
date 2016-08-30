@@ -18,8 +18,9 @@
 #import "LMYArticleSource.h"
 #import "LMYArticleViewController.h"
 #import "LMYArticleOtherListCell.h"
+#import "LMYArticlePresentAnimationTransition.h"
 
-@interface LMYAllTableViewController ()
+@interface LMYAllTableViewController ()<UIViewControllerTransitioningDelegate>
 @property (nonatomic, weak) LMYInfiniteScrollView *handpickScrollView ;
 @property (nonatomic,strong) NSMutableArray *articles ;
 @property (nonatomic, assign) int offset ;
@@ -27,7 +28,7 @@
 @property (nonatomic,strong) NSCache *cellHeightCache ;
 //@property (nonatomic, assign) NSInteger dayCount ;
 @property (nonatomic,strong) NSMutableArray *days ;
-
+@property (nonatomic,strong) LMYArticlePresentAnimationTransition *animationTransition ;
 
 
 @end
@@ -61,6 +62,15 @@
         [_cellHeightCache setCountLimit:5];
     }
     return _cellHeightCache ;
+}
+
+- (LMYArticlePresentAnimationTransition *)animationTransition
+{
+    if (_animationTransition == nil)
+    {
+        _animationTransition = [[LMYArticlePresentAnimationTransition alloc] init] ;
+    }
+    return _animationTransition ;
 }
 
 #pragma mark - 初始化操作
@@ -308,11 +318,28 @@
     {
         return ;
     }
-    LMYArticleViewController *articleVc = [[LMYArticleViewController alloc] init];
     
-    [self presentViewController:articleVc animated:YES completion:nil];
+    LMYArticleViewController *articleVc = [[LMYArticleViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:articleVc];
+    articleVc.articleModel = self.articles[indexPath.row];
+//    nav.modalPresentationStyle = UIModalPresentationCustom ;
+    nav.transitioningDelegate = self ;
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIWindow *window = [UIApplication sharedApplication] .keyWindow;
+    self.animationTransition.fromRect = [self.view convertRect:cell.frame toView:window];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
+#pragma mark - UIViewControllerTransitioningDelegate
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    return self.animationTransition;
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
+{
+    return self.animationTransition;
+}
 
 - (void)didReceiveMemoryWarning
 {

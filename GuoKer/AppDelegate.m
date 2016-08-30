@@ -18,6 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
     NSNumber *theme = [[NSUserDefaults standardUserDefaults] objectForKey:ThemeModeKey];
     if (!theme) {
         [[LMYThemeManager sharedManager] changeModeWithTheme:ThemeDay];
