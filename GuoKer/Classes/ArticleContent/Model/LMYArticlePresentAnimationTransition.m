@@ -69,7 +69,7 @@
     fromVc.view.hidden = YES ;
     
     UIView *cover = [[UIView alloc] initWithFrame:containerView.bounds];
-    cover.backgroundColor = LMYColor(200, 200, 200, 0.4);
+    cover.backgroundColor = LMYColor(50, 50, 50, 0.4);
     [containerView addSubview:cover];
     
     UIView *whiteView = [[UIView alloc] init];
@@ -81,7 +81,7 @@
     toVc.view.hidden = YES ;
     
     NSTimeInterval duration = [self transitionDuration:transitionContext];
-    [UIView animateWithDuration:duration animations:^{
+    [UIView animateWithDuration:duration delay:0.2 options:UIViewAnimationOptionCurveLinear animations:^{
         whiteView.frame = CGRectMake(0, 0, containerView.width,containerView.height);
         tempBgView.transform = CGAffineTransformMakeScale(0.85, 0.85);
         cover.alpha = 0.8;
@@ -96,6 +96,22 @@
             fromVc.view.hidden = NO ;
         }
     }];
+//    
+//    [UIView animateWithDuration:duration  animations:^{
+//        whiteView.frame = CGRectMake(0, 0, containerView.width,containerView.height);
+//        tempBgView.transform = CGAffineTransformMakeScale(0.85, 0.85);
+//        cover.alpha = 0.8;
+//    } completion:^(BOOL finished) {
+//        BOOL wasCancelled = [transitionContext transitionWasCancelled];
+//        [transitionContext completeTransition:!wasCancelled];
+//        toVc.view.hidden = NO ;
+//        [whiteView removeFromSuperview];
+//        [tempBgView removeFromSuperview];
+//        [cover removeFromSuperview];
+//        if (wasCancelled) {
+//            fromVc.view.hidden = NO ;
+//        }
+//    }];
 }
 
 - (void)dismissAnimation:(id<UIViewControllerContextTransitioning>)transitionContext

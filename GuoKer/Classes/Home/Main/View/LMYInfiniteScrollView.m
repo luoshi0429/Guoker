@@ -97,6 +97,7 @@ static int const totalImageViewCount = 3 ;
     {
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.contentMode = UIViewContentModeScaleAspectFill ;
+        imageView.clipsToBounds = YES ;
         imageView.userInteractionEnabled = YES ;
         UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImage:)];
         [imageView addGestureRecognizer:tapGes];
